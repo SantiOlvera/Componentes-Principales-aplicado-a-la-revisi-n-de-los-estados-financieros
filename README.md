@@ -1,0 +1,1 @@
+# Componentes-Principales-aplicado-a-la-revisi-n-de-los-estados-financieros
