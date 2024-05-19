@@ -1,0 +1,65 @@
+---
+title: "Proyecto_Final"
+output: html_document
+date: "2024-05-19"
+---
+
+```{r}
+library(readr)
+library(tidyr)
+library(dplyr)
+```
+
+
+```{r}
+#Carga de todos los financial ratios
+ABBV_financial_ratios <- read_csv("./financial_ratios/ABBV_financial_ratios.csv")
+ABT_financial_ratios <- read_csv("./financial_ratios/ABT_financial_ratios.csv")
+BMY_financial_ratios <- read_csv("./financial_ratios/BMY_financial_ratios.csv")
+DHR_financial_ratios <- read_csv("./financial_ratios/DHR_financial_ratios.csv")
+JNJ_financial_ratios <- read_csv("./financial_ratios/JNJ_financial_ratios.csv")
+LLY_financial_ratios <- read_csv("./financial_ratios/LLY_financial_ratios.csv")
+MRK_financial_ratios <- read_csv("./financial_ratios/MRK_financial_ratios.csv")
+PFE_financial_ratios <- read_csv("./financial_ratios/PFE_financial_ratios.csv")
+TMO_financial_ratios <- read_csv("./financial_ratios/TMO_financial_ratios.csv")
+UNH_financial_ratios <- read_csv("./financial_ratios/UNH_financial_ratios.csv")
+```
+
+```{r}
+print(colnames(ABBV_financial_ratios))
+
+```
+
+
+```{r}
+# Lista de dataframes y nombres de empresas
+dfs <- list(
+  ABBV = ABBV_financial_ratios,
+  ABT = ABT_financial_ratios,
+  BMY = BMY_financial_ratios,
+  DHR = DHR_financial_ratios,
+  JNJ = JNJ_financial_ratios,
+  LLY = LLY_financial_ratios,
+  MRK = MRK_financial_ratios,
+  PFE = PFE_financial_ratios,
+  TMO = TMO_financial_ratios,
+  UNH = UNH_financial_ratios
+)
+
+# Función para transformar cada dataframe
+transform_df <- function(df, company_name) {
+  df %>%
+    rename(Razóm = Razón, Valor = Valor) %>%
+    pivot_wider(names_from = Razóm, values_from = Valor) %>%
+    mutate(Company = company_name) %>%
+    select(Company, everything())
+}
+
+# Transformar y combinar todos los dataframes
+Razones_Financieras <- bind_rows(lapply(names(dfs), function(name) transform_df(dfs[[name]], name)))
+```
+
+```{r}
+
+```
+
