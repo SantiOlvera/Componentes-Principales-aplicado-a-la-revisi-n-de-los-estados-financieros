@@ -9,6 +9,7 @@ library(readr)
 library(tidyr)
 library(dplyr)
 library(factoextra)
+library(corrplot)
 
 ```
 
@@ -162,6 +163,19 @@ fviz_nbclust(prueba2, FUNcluster=kmeans, k.max = 8)
 ```
 
 ```{r}
+fviz_contrib(comp_principales, choice = "var", axes = 1)
+```
+
+
+```{r}
+fviz_contrib(comp_principales, choice = "var", axes = 2)
+```
+
+```{r}
+fviz_contrib(comp_principales, choice = "var", axes = 3)
+```
+
+```{r}
 kmeans1<-eclust(prueba2, "kmeans", hc_metric="eucliden",k=3)
 ```
 
@@ -170,5 +184,13 @@ kmeans1<-eclust(prueba2, "kmeans", hc_metric="eucliden",k=3)
 #Comparación con K-means a partir del DataFrame original (sin el PCA)
 kmeans2<-eclust(Razones_Financieras, "kmeans", hc_metric="eucliden",k=3)
 
+```
+
+```{r}
+fviz_silhouette(kmeans1) 
+```
+
+```{r}
+fviz_silhouette(kmeans2) 
 ```
 
