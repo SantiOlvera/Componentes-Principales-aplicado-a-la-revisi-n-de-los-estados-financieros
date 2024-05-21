@@ -118,6 +118,18 @@ rownames_vec <- rownames(Razones_Financieras)
 Razones_Financieras<-Razones_Financieras[, -1]
 rownames(Razones_Financieras)<-rownames_vec
 str(Razones_Financieras)
+
+```
+
+```{r}
+summary(Razones_Financieras)
+```
+
+
+## Matriz de Correlación
+```{r}
+R <- cor(Razones_Financieras, use = "pairwise.complete.obs")
+corrplot(R, type = "upper", method = "ellipse",tl.cex = 0.9)
 ```
 
 
@@ -126,6 +138,22 @@ comp_principales<-prcomp(Razones_Financieras)
 fviz_screeplot(comp_principales)
 summary(comp_principales)
 ```
+
+### Contribución de las variabels a cada CP
+```{r}
+comp_principales$rotation
+```
+
+
+##Biplot: Visualización de las variables que contribuyen más a las primeras 2 CP
+
+mutlcap y pascc son medidas para cp1
+cobinter es para cp2
+```{r}
+fviz_pca_biplot(comp_principales,repel = T,geom.ind = "point")
+```
+
+
 
 ```{r}
 comp_principales<-prcomp(Razones_Financieras, rank.=3)
