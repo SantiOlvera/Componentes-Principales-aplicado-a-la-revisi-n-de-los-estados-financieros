@@ -122,6 +122,8 @@ str(Razones_Financieras)
 
 ```
 
+
+
 ```{r}
 summary(Razones_Financieras)
 ```
@@ -192,5 +194,17 @@ fviz_silhouette(kmeans1)
 
 ```{r}
 fviz_silhouette(kmeans2) 
+```
+
+
+```{r}
+colnames(Razones_Financieras)
+```
+
+```{r}
+dm<-dist(prueba2) 
+hc<-hclust(dm, method="complete") # simple dendrogram
+plot(hc, hang=-1) 
+rect.hclust(hc, k=5, border="red") 
 ```
 
