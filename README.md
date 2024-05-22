@@ -31,6 +31,3 @@ The objective of this study is to optimize financial analysis in the pharmaceuti
 - 1. Clone the repository
 - 2. Open the Proyecto_Final.Rmd file in RStudio to access the analysis of pharmaceutical companies. Run the code chunks to reproduce the analysis.
 - 3. Open the Dashboard.R file in RStudio to access the Shiny app comparing pharmaceutical and communication/entertainment companies. Run the app to explore the comparative analysis interactively.
-- 4.We used K-means clustering on the PCA values and on the original dataframe to identify groups of companies with similar financial profiles.
-- 5.We compared the clustering results in both spaces (PCA vs. original) and applied Hierarchical Clustering to validate the findings.
-- 6.We analyzed and interpreted the obtained results.
